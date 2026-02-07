@@ -2,91 +2,344 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vitor Azevedo</title>
-  <meta name="description" content="Portfólio e apresentação — Vitor Azevedo." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Portfólio de Vitor Azevedo — Product Manager focado em produtos digitais, APIs e integrações." />
+  <title>Vitor Azevedo • Product Manager</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
+
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="./">Vitor Azevedo</a>
-      <nav class="nav">
-        <a href="#o-que-eu-faco">O que eu faço</a>
-        <a href="#certificados">Certificados</a>
-        <a href="#contato">Contato</a>
+    <div class="container header-row">
+      <a class="brand" href="index.html" aria-label="Voltar para o início">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">Vitor Azevedo</span>
+      </a>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+          <span class="sr-only">Abrir menu</span>
+          <!-- icon: menu -->
+          <svg class="icon icon-24" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div id="nav-links" class="nav-links">
+          <a href="#sobre">Sobre</a>
+          <a href="#cases">Cases</a>
+          <a href="#conteudos">Conteúdos</a>
+          <a href="#contato">Contato</a>
+          <a class="btn btn-secondary btn-sm" href="assets/Vitor_Azevedo_CV.pdf" target="_blank" rel="noopener">Baixar CV</a>
+        </div>
       </nav>
     </div>
   </header>
 
-  <main class="container">
+  <main id="conteudo">
     <section class="hero">
-      <div class="hero-text">
-        <h1>Vitor Azevedo</h1>
-        <p class="lead">
-          Filho da Marisa e do Dimas, irmão mais velho do Lucas e do Matheus. Entusiasta de tecnologia, games, hq’s, musicas e esportes.
-          Procuro estar em sintonia com toda comunidade ao meu redor com o propósito de influenciar e exercer um papel relevante a nossa sociedade.
-        </p>
-        <div class="cta-row">
-          <a class="btn" href="https://www.linkedin.com/in/vitor-azevedo-pm-po/" target="_blank" rel="noopener">Acesse meu LinkedIn</a>
-          <a class="btn btn-ghost" href="https://docs.google.com/presentation/d/1klMLEHCChTls1iUYcKuA3IR4lEvQ9VpihX7XJRZd63g/edit?usp=sharing" target="_blank" rel="noopener">Acesse meu portfólio</a>
-        </div>
-      </div>
-
-      <figure class="hero-media">
-        <img src="assets/images/hero.jpeg" alt="Foto de Vitor Azevedo" />
-      </figure>
-    </section>
-
-    <section id="o-que-eu-faco" class="section">
-      <h2>O que eu faço?</h2>
-      <div class="card">
-        <ul class="bullets">
-          <li>Ajudo pessoas e organizações atingirem resultados através dos principios da gestão ágil.</li>
-          <li>Atuo como facilitador entre times, squads, empresas e stakeholders.</li>
-          <li>Trabalho planejando, organizando, priorizando e refinando o backlog de produtos, possibilitando a criação de entregas de valor para pessoas.</li>
-          <li>Atuo na elaboração da arquitetura da informação, criando documentos técnicos, casos de uso, jornadas de usuários, protótipos, mapas mentais, relatórios e outras métricas de valor.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="certificados" class="section">
-      <h2>Certificados</h2>
-      <div class="card">
-        <div class="badges">
-          <img src="assets/images/cspo.png" alt="CSPO - Certified Scrum Product Owner" />
-          <img src="assets/images/less.png" alt="LeSS Basics" />
-          <img src="assets/images/kmp.png" alt="Kanban Management Professional" />
-        </div>
-      </div>
-    </section>
-
-    <section id="contato" class="section">
-      <h2>Onde me encontrar?</h2>
-      <p class="muted">Estou disponível através dos contatos abaixo:</p>
-
-      <div class="grid">
-        <div class="card">
-          <h3>Email</h3>
-          <p><a href="mailto:vitor.azevedo.b@gmail.com">vitor.azevedo.b@gmail.com</a></p>
-        </div>
-        <div class="card">
-          <h3>Telefone</h3>
-          <p><a href="tel:+5512991211582">(12) 99121-1582</a></p>
-        </div>
-        <div class="card">
-          <h3>Links</h3>
-          <p class="links">
-            <a href="https://www.linkedin.com/in/vitor-azevedo-pm-po/" target="_blank" rel="noopener">Acesse meu LinkedIn</a>
-            <a href="https://docs.google.com/presentation/d/1klMLEHCChTls1iUYcKuA3IR4lEvQ9VpihX7XJRZd63g/edit?usp=sharing" target="_blank" rel="noopener">Acesse meu portfólio</a>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="badge">
+            <!-- icon: spark -->
+            <svg class="icon icon-16" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2l1.6 6.2L20 10l-6.4 1.8L12 18l-1.6-6.2L4 10l6.4-1.8L12 2z" fill="currentColor"/>
+            </svg>
+            Product Manager • Produtos digitais • B2B/SaaS
           </p>
+
+          <h1>Construo produtos com foco em <span class="gradient">impacto</span>, dados e experiência.</h1>
+
+          <p class="lead">
+            Atuo em discovery e delivery ponta a ponta, com forte experiência em APIs, integrações e soluções B2B.
+            Transformo problemas complexos em experiências simples — com métricas claras e execução pragmática.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#cases">
+              Ver cases
+              <svg class="icon icon-20" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h12M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/vitor-azevedo-pm-po/" target="_blank" rel="noopener">
+              LinkedIn
+              <svg class="icon icon-20" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h4v16H4zM6 3.5a2 2 0 110 4 2 2 0 010-4zM10 10h4v2.2c.6-1.2 1.9-2.4 4-2.4 4.2 0 5 2.8 5 6.5V20h-4v-3.6c0-2.1 0-4.8-2.9-4.8-2.9 0-3.3 2.3-3.3 4.6V20h-4V10z" fill="currentColor"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="meta-row" aria-label="Informações rápidas">
+            <div class="meta">
+              <span class="meta-k">Especialidade</span>
+              <span class="meta-v">Discovery • APIs • Integrações • B2B</span>
+            </div>
+            <div class="meta">
+              <span class="meta-k">Ferramentas</span>
+              <span class="meta-v">OKRs • KPIs • SQL • GA4 • Figma</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Cartão de destaque">
+          <div class="avatar" aria-hidden="true">
+            <span>VA</span>
+          </div>
+
+          <div class="hero-card-body">
+            <h2 class="h3">Em resumo</h2>
+            <ul class="checklist">
+              <li>
+                <svg class="icon icon-20" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Priorização e execução com clareza (roadmap, trade-offs)
+              </li>
+              <li>
+                <svg class="icon icon-20" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Experimentos e métricas para reduzir risco e acelerar aprendizado
+              </li>
+              <li>
+                <svg class="icon icon-20" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Comunicação simples com stakeholders e times multidisciplinares
+              </li>
+            </ul>
+
+            <div class="hero-card-actions">
+              <a class="btn btn-secondary btn-block" href="#contato">
+                Falar comigo
+                <svg class="icon icon-20" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H6l-3 3v-6.5A8.5 8.5 0 1113.5 3 8.5 8.5 0 0121 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="sobre" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Sobre</h2>
+          <p class="muted">Quem eu sou e como eu trabalho.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Minha abordagem</h3>
+            <p>
+              Eu gosto de trabalhar com ciclos curtos: entender o problema, mapear oportunidades, definir hipóteses,
+              medir impacto e iterar. Priorizo resultados observáveis e uma narrativa clara para decisão.
+            </p>
+
+            <div class="pill-row" aria-label="Competências">
+              <span class="pill">Discovery</span>
+              <span class="pill">Roadmap</span>
+              <span class="pill">Experimentação</span>
+              <span class="pill">Métricas</span>
+              <span class="pill">APIs</span>
+              <span class="pill">Integrações</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>O que eu entrego</h3>
+            <ul class="bullets">
+              <li>PRD/BRD, user stories e critérios de aceite (BDD quando faz sentido)</li>
+              <li>Definição de OKRs, KPIs e funil de métricas (North Star + guardrails)</li>
+              <li>Mapa de jornadas, fluxos e alinhamento com Design/Engenharia</li>
+              <li>Rituais ágeis e colaboração cross (Kanban/Scrum conforme contexto)</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <footer class="site-footer">
-      <p>© <span id="year"></span> • Vitor Azevedo</p>
-    </footer>
+    <section id="cases" class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Cases</h2>
+          <p class="muted">Estruture seus cases como: problema → solução → impacto. Abaixo vai um template pronto.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card card-case">
+            <div class="case-top">
+              <span class="tag">Case 01</span>
+              <span class="tag tag-soft">Onboarding</span>
+            </div>
+            <h3>Redução de atrito no onboarding</h3>
+            <p class="muted">
+              Descreva o contexto, quem é o usuário e qual era o problema principal (ex.: baixa ativação).
+            </p>
+            <ul class="mini">
+              <li><strong>Problema:</strong> …</li>
+              <li><strong>Solução:</strong> …</li>
+              <li><strong>Impacto:</strong> …</li>
+            </ul>
+            <div class="card-actions">
+              <a class="btn btn-secondary btn-sm" href="#" aria-disabled="true">Detalhes (em breve)</a>
+            </div>
+          </article>
+
+          <article class="card card-case">
+            <div class="case-top">
+              <span class="tag">Case 02</span>
+              <span class="tag tag-soft">API</span>
+            </div>
+            <h3>Produto de API e integrações</h3>
+            <p class="muted">
+              Mostre decisões de trade-off, desenho de contratos, versionamento, SLAs e métricas.
+            </p>
+            <ul class="mini">
+              <li><strong>Problema:</strong> …</li>
+              <li><strong>Solução:</strong> …</li>
+              <li><strong>Impacto:</strong> …</li>
+            </ul>
+            <div class="card-actions">
+              <a class="btn btn-secondary btn-sm" href="#" aria-disabled="true">Detalhes (em breve)</a>
+            </div>
+          </article>
+
+          <article class="card card-case">
+            <div class="case-top">
+              <span class="tag">Case 03</span>
+              <span class="tag tag-soft">Antifraude</span>
+            </div>
+            <h3>Motor de decisão / antifraude</h3>
+            <p class="muted">
+              Explique como você mediu risco, melhorou precisão e reduziu falsos positivos.
+            </p>
+            <ul class="mini">
+              <li><strong>Problema:</strong> …</li>
+              <li><strong>Solução:</strong> …</li>
+              <li><strong>Impacto:</strong> …</li>
+            </ul>
+            <div class="card-actions">
+              <a class="btn btn-secondary btn-sm" href="#" aria-disabled="true">Detalhes (em breve)</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="callout">
+          <div>
+            <h3 class="h4">Quer deixar isso com a sua cara?</h3>
+            <p class="muted">Depois que você subir o site, me diga quais cases você quer destacar e eu adapto a narrativa e o layout.</p>
+          </div>
+          <a class="btn btn-primary" href="#contato">Vamos ajustar juntos</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="conteudos" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Conteúdos</h2>
+          <p class="muted">Links para artigos, apresentações e materiais que você já publica.</p>
+        </div>
+
+        <div class="grid-2">
+          <a class="card link-card" href="#" aria-disabled="true">
+            <div class="link-card-icon">
+              <svg class="icon icon-24" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 3h10v18H7z" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M9 7h6M9 11h6M9 15h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="h4">Artigos (em breve)</h3>
+              <p class="muted">Liste seus melhores posts do WordPress aqui.</p>
+            </div>
+          </a>
+
+          <a class="card link-card" href="https://docs.google.com/presentation/d/1lK2TjGn4oGmqgeXVtMRjqxfoqV0x2dqa/edit?usp=sharing" target="_blank" rel="noopener">
+            <div class="link-card-icon">
+              <svg class="icon icon-24" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 5h16v14H4z" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M8 9h8M8 12h8M8 15h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="h4">Portfólio (Slides)</h3>
+              <p class="muted">Abrir apresentação com projetos e cases.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contato</h2>
+          <p class="muted">Me chame por onde for mais fácil.</p>
+        </div>
+
+        <div class="grid-3">
+          <a class="card contact-card" href="mailto:vitorbazevedo01@gmail.com">
+            <div class="contact-icon">
+              <svg class="icon icon-24" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="h4">Email</h3>
+              <p class="muted">vitorbazevedo01@gmail.com</p>
+            </div>
+          </a>
+
+          <a class="card contact-card" href="https://wa.me/5519992181274" target="_blank" rel="noopener">
+            <div class="contact-icon">
+              <svg class="icon icon-24" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 11.5a8.5 8.5 0 01-8.5 8.5c-1.3 0-2.6-.3-3.7-.8L4 20l.9-3.7a8.5 8.5 0 1115.1-4.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M9 8c.2 1.7 1.4 3.8 3.9 5.2 1.1.6 2 .8 2.6.9.4 0 .8-.2 1-.6l.6-1.1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="h4">WhatsApp</h3>
+              <p class="muted">+55 (19) 99218-1274</p>
+            </div>
+          </a>
+
+          <a class="card contact-card" href="https://www.linkedin.com/in/vitor-azevedo-pm-po/" target="_blank" rel="noopener">
+            <div class="contact-icon">
+              <svg class="icon icon-24" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h4v16H4zM6 3.5a2 2 0 110 4 2 2 0 010-4zM10 10h4v2.2c.6-1.2 1.9-2.4 4-2.4 4.2 0 5 2.8 5 6.5V20h-4v-3.6c0-2.1 0-4.8-2.9-4.8-2.9 0-3.3 2.3-3.3 4.6V20h-4V10z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="h4">LinkedIn</h3>
+              <p class="muted">Abrir perfil</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="footer-cta">
+          <p class="muted">© <span id="year"></span> • Vitor Azevedo</p>
+          <a class="btn btn-ghost btn-sm" href="#conteudo">
+            Voltar ao topo
+            <svg class="icon icon-20" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 5v14M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script src="assets/js/main.js"></script>
