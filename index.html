@@ -1,347 +1,421 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Portfólio de Vitor Azevedo — Product Manager focado em produtos digitais, APIs e integrações." />
-  <title>Vitor Azevedo • Product Manager</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vitor Azevedo — Product Manager</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <link rel="stylesheet" href=".assets/css/style.css" />
+    :root {
+      --navy:   #0a1628;
+      --navy2:  #112040;
+      --blue:   #1a3a6b;
+      --accent: #c9a84c;
+      --accent2:#e8c97a;
+      --light:  #f5f3ef;
+      --muted:  #8a96a8;
+      --white:  #ffffff;
+      --radius: 4px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--light);
+      color: var(--navy);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 5vw;
+      background: rgba(10,22,40,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--white); letter-spacing: 0.02em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: all 0.3s; }
+
+    /* HERO */
+    #hero { min-height: 100vh; background: var(--navy); display: flex; align-items: center; padding: 6rem 5vw 4rem; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 80% 40%, rgba(26,58,107,0.5) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 80%, rgba(201,168,76,0.08) 0%, transparent 60%); }
+    .hero-grid { position: absolute; inset: 0; opacity: 0.04; background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 48px 48px; }
+    .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; width: 100%; }
+    .hero-text { animation: fadeUp 0.9s ease both; }
+    .hero-tag { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(201,168,76,0.4); padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.5rem; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 700; color: var(--white); line-height: 1.1; margin-bottom: 1.5rem; }
+    h1 em { color: var(--accent); font-style: normal; }
+    .hero-desc { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.65); max-width: 480px; margin-bottom: 2.5rem; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: var(--navy); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.85rem 2rem; border-radius: var(--radius); text-decoration: none; transition: background 0.2s, transform 0.2s; }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.75); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.85rem 2rem; border-radius: var(--radius); text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.2s; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .hero-photo-wrap { display: flex; justify-content: flex-end; animation: fadeUp 0.9s 0.2s ease both; }
+    .hero-photo-frame { position: relative; width: 340px; height: 400px; }
+    .hero-photo-frame::before { content: ''; position: absolute; top: 16px; left: 16px; right: -16px; bottom: -16px; border: 2px solid rgba(201,168,76,0.35); border-radius: var(--radius); z-index: 0; }
+    .hero-photo-frame img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); filter: grayscale(20%) contrast(1.05); }
+
+    /* SECTIONS COMMON */
+    section { padding: 5rem 5vw; }
+    .section-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 600; color: var(--navy); margin-bottom: 1rem; line-height: 1.2; }
+    .section-divider { width: 48px; height: 3px; background: var(--accent); margin-bottom: 2.5rem; }
+
+    /* ABOUT */
+    #about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; max-width: 1100px; }
+    .about-stats { display: flex; flex-direction: column; gap: 1.5rem; }
+    .stat-card { background: var(--light); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: var(--radius); }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--navy); }
+    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+    .about-text p { font-size: 1rem; line-height: 1.8; color: #4a5568; margin-bottom: 1.25rem; }
+
+    /* SERVICES */
+    #services { background: var(--light); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; max-width: 1100px; }
+    .service-card { background: var(--white); border: 1px solid rgba(0,0,0,0.06); border-radius: var(--radius); padding: 2rem; transition: box-shadow 0.25s, transform 0.25s; position: relative; overflow: hidden; }
+    .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--accent); transition: width 0.3s; }
+    .service-card:hover { box-shadow: 0 8px 30px rgba(10,22,40,0.1); transform: translateY(-3px); }
+    .service-card:hover::after { width: 100%; }
+    .service-icon { font-size: 1.6rem; margin-bottom: 1rem; display: block; }
+    .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.75rem; }
+    .service-card p { font-size: 0.875rem; line-height: 1.7; color: #64748b; }
+
+    /* CERTS */
+    #certs { background: var(--navy); }
+    #certs h2 { color: var(--white); }
+    .certs-grid { display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; max-width: 1100px; }
+    .cert-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: var(--radius); padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.25rem; transition: background 0.2s, border-color 0.2s; text-decoration: none; }
+    .cert-card:hover { background: rgba(201,168,76,0.08); border-color: var(--accent); }
+    .cert-card img { height: 60px; width: auto; object-fit: contain; filter: brightness(1.1); }
+    .cert-info { flex: 1; }
+    .cert-info strong { display: block; font-size: 0.85rem; font-weight: 600; color: var(--white); margin-bottom: 0.25rem; }
+    .cert-info span { font-size: 0.75rem; color: var(--accent); }
+
+    /* PROJECTS */
+    #projects { background: var(--white); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; max-width: 1100px; }
+    .project-card { border: 1px solid rgba(0,0,0,0.07); border-radius: var(--radius); overflow: hidden; transition: box-shadow 0.25s, transform 0.25s; background: var(--white); }
+    .project-card:hover { box-shadow: 0 12px 40px rgba(10,22,40,0.12); transform: translateY(-4px); }
+    .project-header { background: var(--navy2); padding: 1.75rem 2rem; border-bottom: 3px solid var(--accent); }
+    .project-tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; display: block; }
+    .project-header h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--white); }
+    .project-body { padding: 1.5rem 2rem; }
+    .project-body p { font-size: 0.875rem; line-height: 1.7; color: #64748b; margin-bottom: 1rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .pill { font-size: 0.7rem; font-weight: 500; background: var(--light); color: var(--blue); padding: 0.25rem 0.65rem; border-radius: 99px; }
+
+    /* CONTACT */
+    #contact { background: var(--light); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; align-items: start; }
+    .contact-info p { font-size: 1rem; line-height: 1.75; color: #4a5568; margin-bottom: 2rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; color: var(--navy); font-size: 0.9rem; font-weight: 500; padding: 0.9rem 1.25rem; background: var(--white); border: 1px solid rgba(0,0,0,0.06); border-radius: var(--radius); transition: border-color 0.2s, color 0.2s, box-shadow 0.2s; }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 4px 16px rgba(10,22,40,0.07); }
+    .contact-link-icon { font-size: 1.1rem; }
+    .contact-side { background: var(--navy); border-radius: var(--radius); padding: 2.5rem; }
+    .contact-side h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 1.5rem; }
+    .cfield { margin-bottom: 1.25rem; }
+    .cfield label { display: block; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    .cfield input, .cfield textarea { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 0.75rem 1rem; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+    .cfield input:focus, .cfield textarea:focus { border-color: var(--accent); }
+    .cfield textarea { resize: vertical; min-height: 100px; }
+    .btn-send { width: 100%; background: var(--accent); color: var(--navy); font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.9rem; border: none; border-radius: var(--radius); cursor: pointer; transition: background 0.2s; }
+    .btn-send:hover { background: var(--accent2); }
+
+    /* FOOTER */
+    footer { background: var(--navy); padding: 2rem 5vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(201,168,76,0.15); }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); }
+    .footer-logo span { color: var(--accent); }
+    footer p { font-size: 0.75rem; color: var(--muted); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-photo-wrap { justify-content: center; }
+      .hero-desc { margin-inline: auto; }
+      .hero-cta { justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; flex-direction: column; gap: 1.5rem; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); padding: 2rem 5vw; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .hero-photo-frame { width: 260px; height: 310px; }
+    }
+  </style>
 </head>
-
 <body>
-  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <header class="site-header">
-    <div class="container header-row">
-      <a class="brand" href="index.html" aria-label="Voltar para o início">
-        <span class="brand-dot" aria-hidden="true"></span>
-        <span class="brand-text">Vitor Azevedo</span>
-      </a>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Vitor<span>.</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">Sobre</a></li>
+    <li><a href="#services">Atuação</a></li>
+    <li><a href="#certs">Certificados</a></li>
+    <li><a href="#projects">Projetos</a></li>
+    <li><a href="#contact">Contato</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
 
-      <nav class="nav" aria-label="Navegação principal">
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
-          <span class="sr-only">Abrir menu</span>
-          <!-- icon: menu -->
-          <svg class="icon icon-24" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
-
-        <div id="nav-links" class="nav-links">
-          <a href="#sobre">Sobre</a>
-          <a href="#cases">Cases</a>
-          <a href="#conteudos">Conteúdos</a>
-          <a href="#contato">Contato</a>
-          <a class="btn btn-secondary btn-sm" href="assets/Vitor_Azevedo_CV.pdf" target="_blank" rel="noopener">Baixar CV</a>
-        </div>
-      </nav>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-tag">Product Manager</span>
+      <h1>Vitor<br><em>Azevedo</em></h1>
+      <p class="hero-desc">Ajudo pessoas e organizações atingirem resultados através dos princípios da gestão ágil — conectando times, estratégia e entrega de valor.</p>
+      <div class="hero-cta">
+        <a href="https://docs.google.com/presentation/d/1klMLEHCChTls1iUYcKuA3IR4lEvQ9VpihX7XJRZd63g/edit?usp=sharing" target="_blank" class="btn-primary">Ver Portfólio ↗</a>
+        <a href="#contact" class="btn-ghost">Entrar em Contato</a>
+      </div>
     </div>
-  </header>
-
-  <main id="conteudo">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="badge">
-            <!-- icon: spark -->
-            <svg class="icon icon-16" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 2l1.6 6.2L20 10l-6.4 1.8L12 18l-1.6-6.2L4 10l6.4-1.8L12 2z" fill="currentColor"/>
-            </svg>
-            Product Manager • Produtos digitais • B2B/SaaS
-          </p>
-
-          <h1>Construo produtos com foco em <span class="gradient">impacto</span>, dados e experiência.</h1>
-
-          <p class="lead">
-            Atuo em discovery e delivery ponta a ponta, com forte experiência em APIs, integrações e soluções B2B.
-            Transformo problemas complexos em experiências simples — com métricas claras e execução pragmática.
-          </p>
-
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#cases">
-              Ver cases
-              <svg class="icon icon-20" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M5 12h12M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-
-            <a class="btn btn-ghost" href="https://www.linkedin.com/in/vitor-azevedo-pm-po/" target="_blank" rel="noopener">
-              LinkedIn
-              <svg class="icon icon-20" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 4h4v16H4zM6 3.5a2 2 0 110 4 2 2 0 010-4zM10 10h4v2.2c.6-1.2 1.9-2.4 4-2.4 4.2 0 5 2.8 5 6.5V20h-4v-3.6c0-2.1 0-4.8-2.9-4.8-2.9 0-3.3 2.3-3.3 4.6V20h-4V10z" fill="currentColor"/>
-              </svg>
-            </a>
-          </div>
-
-          <div class="meta-row" aria-label="Informações rápidas">
-            <div class="meta">
-              <span class="meta-k">Especialidade</span>
-              <span class="meta-v">Discovery • APIs • Integrações • B2B</span>
-            </div>
-            <div class="meta">
-              <span class="meta-k">Ferramentas</span>
-              <span class="meta-v">OKRs • KPIs • SQL • GA4 • Figma</span>
-            </div>
-          </div>
-        </div>
-
-        <aside class="hero-card" aria-label="Cartão de destaque">
-          <div class="avatar" aria-hidden="true">
-            <span>VA</span>
-          </div>
-
-          <div class="hero-card-body">
-            <h2 class="h3">Em resumo</h2>
-            <ul class="checklist">
-              <li>
-                <svg class="icon icon-20" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Priorização e execução com clareza (roadmap, trade-offs)
-              </li>
-              <li>
-                <svg class="icon icon-20" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Experimentos e métricas para reduzir risco e acelerar aprendizado
-              </li>
-              <li>
-                <svg class="icon icon-20" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Comunicação simples com stakeholders e times multidisciplinares
-              </li>
-            </ul>
-
-            <div class="hero-card-actions">
-              <a class="btn btn-secondary btn-block" href="#contato">
-                Falar comigo
-                <svg class="icon icon-20" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H6l-3 3v-6.5A8.5 8.5 0 1113.5 3 8.5 8.5 0 0121 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </aside>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-frame">
+        <img src="https://vitorbazevedo.wordpress.com/wp-content/uploads/2024/04/img_2281-1.jpeg" alt="Vitor Azevedo" />
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="sobre" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Sobre</h2>
-          <p class="muted">Quem eu sou e como eu trabalho.</p>
-        </div>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Quem sou eu</div>
+  <h2>Sobre Mim</h2>
+  <div class="section-divider"></div>
+  <div class="about-grid reveal">
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">+8</div>
+        <div class="stat-label">Anos em Gestão de Produtos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">&#10022;</div>
+        <div class="stat-label">São José dos Campos, SP</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <p>Filho da Marisa e do Dimas, marido da Adriana, irmão mais velho do Lucas e do Matheus. Entusiasta de tecnologia, games, HQs, músicas e esportes.</p>
+      <p>Procuro estar em sintonia com toda comunidade ao meu redor com o propósito de influenciar e exercer um papel relevante à nossa sociedade.</p>
+      <p>Atuo como facilitador entre times, squads, empresas e stakeholders — trabalhando no planejamento, organização, priorização e refinamento do backlog de produtos, possibilitando a criação de entregas de valor reais para pessoas.</p>
+    </div>
+  </div>
+</section>
 
-        <div class="grid-2">
-          <div class="card">
-            <h3>Minha abordagem</h3>
-            <p>
-              Eu gosto de trabalhar com ciclos curtos: entender o problema, mapear oportunidades, definir hipóteses,
-              medir impacto e iterar. Priorizo resultados observáveis e uma narrativa clara para decisão.
-            </p>
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">O que eu faço</div>
+  <h2>Áreas de Atuação</h2>
+  <div class="section-divider"></div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <span class="service-icon">&#127919;</span>
+      <h3>Gestão de Produto</h3>
+      <p>Planejamento, priorização e refinamento de backlog com foco em entrega de valor. Criação de roadmaps orientados a resultado.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">&#128279;</span>
+      <h3>Facilitação Ágil</h3>
+      <p>Atuação como elo entre times, squads, empresas e stakeholders — garantindo alinhamento e fluidez na execução.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">&#128506;</span>
+      <h3>Arquitetura da Informação</h3>
+      <p>Elaboração de documentos técnicos, casos de uso, jornadas de usuário, protótipos e mapas mentais.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">&#128202;</span>
+      <h3>Métricas &amp; Relatórios</h3>
+      <p>Criação de indicadores de valor, dashboards e relatórios estratégicos para suporte à tomada de decisão.</p>
+    </div>
+  </div>
+</section>
 
-            <div class="pill-row" aria-label="Competências">
-              <span class="pill">Discovery</span>
-              <span class="pill">Roadmap</span>
-              <span class="pill">Experimentação</span>
-              <span class="pill">Métricas</span>
-              <span class="pill">APIs</span>
-              <span class="pill">Integrações</span>
-            </div>
-          </div>
+<!-- CERTS -->
+<section id="certs">
+  <div class="section-label">Formação</div>
+  <h2>Certificados</h2>
+  <div class="section-divider" style="background:rgba(201,168,76,0.5)"></div>
+  <div class="certs-grid reveal">
+    <a href="https://badgecert.com/bc/html/groupbadges.html?k=WXlzUXpTeS93NXpNcStLeGhXMDhvRGs0cTkybW0yb2Q" target="_blank" class="cert-card">
+      <img src="https://vitorbazevedo.wordpress.com/wp-content/uploads/2024/04/sa-cspo-600.png" alt="CSPO" />
+      <div class="cert-info">
+        <strong>CSPO</strong>
+        <span>Certified Scrum Product Owner</span>
+      </div>
+    </a>
+    <div class="cert-card">
+      <img src="https://vitorbazevedo.wordpress.com/wp-content/uploads/2024/04/certified-less-basics-e1753417547227.png" alt="LeSS Basics" />
+      <div class="cert-info">
+        <strong>LeSS Basics</strong>
+        <span>Large-Scale Scrum</span>
+      </div>
+    </div>
+    <a href="https://edu.kanban.university/user/123733/8/qualification-certificate/Vml0b3IgQXpldmVkbzpBejI1MTY2OCM6MTcwOTkxMDE2NA==" target="_blank" class="cert-card">
+      <img src="https://vitorbazevedo.wordpress.com/wp-content/uploads/2024/04/kmp.png" alt="KMP" />
+      <div class="cert-info">
+        <strong>KMP</strong>
+        <span>Kanban Management Professional</span>
+      </div>
+    </a>
+  </div>
+</section>
 
-          <div class="card">
-            <h3>O que eu entrego</h3>
-            <ul class="bullets">
-              <li>PRD/BRD, user stories e critérios de aceite (BDD quando faz sentido)</li>
-              <li>Definição de OKRs, KPIs e funil de métricas (North Star + guardrails)</li>
-              <li>Mapa de jornadas, fluxos e alinhamento com Design/Engenharia</li>
-              <li>Rituais ágeis e colaboração cross (Kanban/Scrum conforme contexto)</li>
-            </ul>
-          </div>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Cases</div>
+  <h2>Projetos em Destaque</h2>
+  <div class="section-divider"></div>
+  <div class="projects-grid reveal">
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-tag">Produto Digital</span>
+        <h3>Gestão Antifraude</h3>
+      </div>
+      <div class="project-body">
+        <p>Atuação como PM em produto antifraude — priorizando backlog, definindo KPIs e integrando squads de dados, engenharia e operações.</p>
+        <div class="project-tags">
+          <span class="pill">Product Discovery</span>
+          <span class="pill">Risk &amp; Fraud</span>
+          <span class="pill">Scrum</span>
         </div>
       </div>
-    </section>
-
-    <section id="cases" class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <h2>Cases</h2>
-          <p class="muted">Estruture seus cases como: problema → solução → impacto. Abaixo vai um template pronto.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="card card-case">
-            <div class="case-top">
-              <span class="tag">Case 01</span>
-              <span class="tag tag-soft">Onboarding</span>
-            </div>
-            <h3>Redução de atrito no onboarding</h3>
-            <p class="muted">
-              Descreva o contexto, quem é o usuário e qual era o problema principal (ex.: baixa ativação).
-            </p>
-            <ul class="mini">
-              <li><strong>Problema:</strong> …</li>
-              <li><strong>Solução:</strong> …</li>
-              <li><strong>Impacto:</strong> …</li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-secondary btn-sm" href="#" aria-disabled="true">Detalhes (em breve)</a>
-            </div>
-          </article>
-
-          <article class="card card-case">
-            <div class="case-top">
-              <span class="tag">Case 02</span>
-              <span class="tag tag-soft">API</span>
-            </div>
-            <h3>Produto de API e integrações</h3>
-            <p class="muted">
-              Mostre decisões de trade-off, desenho de contratos, versionamento, SLAs e métricas.
-            </p>
-            <ul class="mini">
-              <li><strong>Problema:</strong> …</li>
-              <li><strong>Solução:</strong> …</li>
-              <li><strong>Impacto:</strong> …</li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-secondary btn-sm" href="#" aria-disabled="true">Detalhes (em breve)</a>
-            </div>
-          </article>
-
-          <article class="card card-case">
-            <div class="case-top">
-              <span class="tag">Case 03</span>
-              <span class="tag tag-soft">Antifraude</span>
-            </div>
-            <h3>Motor de decisão / antifraude</h3>
-            <p class="muted">
-              Explique como você mediu risco, melhorou precisão e reduziu falsos positivos.
-            </p>
-            <ul class="mini">
-              <li><strong>Problema:</strong> …</li>
-              <li><strong>Solução:</strong> …</li>
-              <li><strong>Impacto:</strong> …</li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-secondary btn-sm" href="#" aria-disabled="true">Detalhes (em breve)</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="callout">
-          <div>
-            <h3 class="h4">Quer deixar isso com a sua cara?</h3>
-            <p class="muted">Depois que você subir o site, me diga quais cases você quer destacar e eu adapto a narrativa e o layout.</p>
-          </div>
-          <a class="btn btn-primary" href="#contato">Vamos ajustar juntos</a>
+    </div>
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-tag">Arquitetura da Informação</span>
+        <h3>Jornada de Usuário</h3>
+      </div>
+      <div class="project-body">
+        <p>Mapeamento completo da jornada do cliente, identificando pontos de fricção e propondo melhorias baseadas em dados e pesquisa qualitativa.</p>
+        <div class="project-tags">
+          <span class="pill">UX Research</span>
+          <span class="pill">Journey Map</span>
+          <span class="pill">Prototyping</span>
         </div>
       </div>
-    </section>
-
-    <section id="conteudos" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Conteúdos</h2>
-          <p class="muted">Links para artigos, apresentações e materiais que você já publica.</p>
-        </div>
-
-        <div class="grid-2">
-          <a class="card link-card" href="#" aria-disabled="true">
-            <div class="link-card-icon">
-              <svg class="icon icon-24" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M7 3h10v18H7z" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M9 7h6M9 11h6M9 15h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div>
-              <h3 class="h4">Artigos (em breve)</h3>
-              <p class="muted">Liste seus melhores posts do WordPress aqui.</p>
-            </div>
-          </a>
-
-          <a class="card link-card" href="https://docs.google.com/presentation/d/1lK2TjGn4oGmqgeXVtMRjqxfoqV0x2dqa/edit?usp=sharing" target="_blank" rel="noopener">
-            <div class="link-card-icon">
-              <svg class="icon icon-24" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 5h16v14H4z" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M8 9h8M8 12h8M8 15h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div>
-              <h3 class="h4">Portfólio (Slides)</h3>
-              <p class="muted">Abrir apresentação com projetos e cases.</p>
-            </div>
-          </a>
-        </div>
+    </div>
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-tag">Portfólio Completo</span>
+        <h3>Cases Detalhados</h3>
       </div>
-    </section>
-
-    <section id="contato" class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <h2>Contato</h2>
-          <p class="muted">Me chame por onde for mais fácil.</p>
+      <div class="project-body">
+        <p>Confira o portfólio completo com todos os projetos, metodologias e resultados entregues ao longo da carreira.</p>
+        <div class="project-tags">
+          <span class="pill">Google Slides</span>
         </div>
-
-        <div class="grid-3">
-          <a class="card contact-card" href="mailto:vitorbazevedo01@gmail.com">
-            <div class="contact-icon">
-              <svg class="icon icon-24" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <h3 class="h4">Email</h3>
-              <p class="muted">vitorbazevedo01@gmail.com</p>
-            </div>
-          </a>
-
-          <a class="card contact-card" href="https://wa.me/5519992181274" target="_blank" rel="noopener">
-            <div class="contact-icon">
-              <svg class="icon icon-24" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M20 11.5a8.5 8.5 0 01-8.5 8.5c-1.3 0-2.6-.3-3.7-.8L4 20l.9-3.7a8.5 8.5 0 1115.1-4.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M9 8c.2 1.7 1.4 3.8 3.9 5.2 1.1.6 2 .8 2.6.9.4 0 .8-.2 1-.6l.6-1.1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div>
-              <h3 class="h4">WhatsApp</h3>
-              <p class="muted">+55 (19) 99218-1274</p>
-            </div>
-          </a>
-
-          <a class="card contact-card" href="https://www.linkedin.com/in/vitor-azevedo-pm-po/" target="_blank" rel="noopener">
-            <div class="contact-icon">
-              <svg class="icon icon-24" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 4h4v16H4zM6 3.5a2 2 0 110 4 2 2 0 010-4zM10 10h4v2.2c.6-1.2 1.9-2.4 4-2.4 4.2 0 5 2.8 5 6.5V20h-4v-3.6c0-2.1 0-4.8-2.9-4.8-2.9 0-3.3 2.3-3.3 4.6V20h-4V10z" fill="currentColor"/>
-              </svg>
-            </div>
-            <div>
-              <h3 class="h4">LinkedIn</h3>
-              <p class="muted">Abrir perfil</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="footer-cta">
-          <p class="muted">© <span id="year"></span> • Vitor Azevedo</p>
-          <a class="btn btn-ghost btn-sm" href="#conteudo">
-            Voltar ao topo
-            <svg class="icon icon-20" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 5v14M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
+        <br>
+        <a href="https://docs.google.com/presentation/d/1klMLEHCChTls1iUYcKuA3IR4lEvQ9VpihX7XJRZd63g/edit?usp=sharing" target="_blank" class="btn-primary" style="font-size:0.75rem;padding:0.65rem 1.25rem;">Acessar Portfólio ↗</a>
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
+</section>
 
-  <script src=".assets/js/main.js"></script>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Vamos conversar</div>
+  <h2>Contato</h2>
+  <div class="section-divider"></div>
+  <div class="contact-grid reveal">
+    <div class="contact-info">
+      <p>Estou disponível para novas oportunidades, colaborações e bate-papos sobre produto, agilidade e tecnologia.</p>
+      <div class="contact-links">
+        <a href="mailto:vitor.azevedo.b@gmail.com" class="contact-link">
+          <span class="contact-link-icon">&#9993;</span>
+          vitor.azevedo.b@gmail.com
+        </a>
+        <a href="tel:+5512991211582" class="contact-link">
+          <span class="contact-link-icon">&#128241;</span>
+          (12) 99121-1582
+        </a>
+        <a href="https://www.linkedin.com/in/vitor-azevedo-pm-po" target="_blank" class="contact-link">
+          <span class="contact-link-icon">&#128188;</span>
+          LinkedIn — vitor-azevedo-pm-po
+        </a>
+      </div>
+    </div>
+    <div class="contact-side">
+      <h3>Envie uma mensagem</h3>
+      <div class="cfield">
+        <label>Nome</label>
+        <input type="text" placeholder="Seu nome completo" />
+      </div>
+      <div class="cfield">
+        <label>E-mail</label>
+        <input type="email" placeholder="seu@email.com" />
+      </div>
+      <div class="cfield">
+        <label>Mensagem</label>
+        <textarea placeholder="Como posso te ajudar?"></textarea>
+      </div>
+      <button class="btn-send" id="btnSend">Enviar Mensagem &#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Vitor<span>.</span>Azevedo</div>
+  <p>&#169; 2025 &middot; Product Manager &middot; São José dos Campos, SP</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  reveals.forEach(function(el) { obs.observe(el); });
+
+  document.getElementById('btnSend').addEventListener('click', function() {
+    var name = document.querySelector('#contact input[type=text]').value;
+    var email = document.querySelector('#contact input[type=email]').value;
+    var msg = document.querySelector('#contact textarea').value;
+    if (!name || !email || !msg) { alert('Por favor, preencha todos os campos.'); return; }
+    window.location.href = 'mailto:vitor.azevedo.b@gmail.com?subject=Contato%20de%20'
+      + encodeURIComponent(name) + '&body=' + encodeURIComponent(msg)
+      + '%0A%0ADe%3A%20' + encodeURIComponent(email);
+  });
+
+  var sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', function() {
+    var scrollY = window.scrollY;
+    sections.forEach(function(s) {
+      var top = s.offsetTop - 80;
+      var bottom = top + s.offsetHeight;
+      var link = document.querySelector('.nav-links a[href="#' + s.id + '"]');
+      if (link) link.style.color = scrollY >= top && scrollY < bottom ? 'var(--accent)' : '';
+    });
+  });
+</script>
 </body>
 </html>
