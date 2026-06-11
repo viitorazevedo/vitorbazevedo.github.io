@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projetos — Vitor Azevedo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #0a1628;
+      --navy2:  #112040;
+      --blue:   #1a3a6b;
+      --accent: #c9a84c;
+      --accent2:#e8c97a;
+      --light:  #f5f3ef;
+      --muted:  #8a96a8;
+      --white:  #ffffff;
+      --radius: 4px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--navy); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 5vw;
+      background: rgba(10,22,40,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--white); letter-spacing: 0.02em; text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); }
+
+    /* HERO BANNER */
+    .page-hero {
+      background: var(--navy);
+      padding: 8rem 5vw 4rem;
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(26,58,107,0.5) 0%, transparent 70%);
+    }
+    .page-hero-grid {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 1100px; }
+    .page-hero-tag { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(201,168,76,0.4); padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.2rem; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 1rem; }
+    .page-hero h1 em { color: var(--accent); font-style: normal; }
+    .page-hero p { font-size: 1rem; color: rgba(255,255,255,0.6); max-width: 540px; line-height: 1.75; }
+
+    /* FILTER BAR */
+    .filter-bar { background: var(--white); border-bottom: 1px solid rgba(0,0,0,0.06); padding: 1rem 5vw; display: flex; gap: 0.75rem; flex-wrap: wrap; position: sticky; top: 64px; z-index: 90; }
+    .filter-btn { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.45rem 1rem; border-radius: 99px; border: 1px solid rgba(0,0,0,0.12); background: transparent; color: #64748b; cursor: pointer; transition: all 0.2s; }
+    .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+    /* PROJECTS SECTION */
+    .projects-section { padding: 3rem 5vw 5rem; max-width: 1200px; margin: 0 auto; }
+    .projects-count { font-size: 0.8rem; color: var(--muted); margin-bottom: 2rem; }
+    .projects-count strong { color: var(--navy); }
+
+    /* PROJECT CARD */
+    .project-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      transition: box-shadow 0.25s;
+    }
+    .project-card:hover { box-shadow: 0 8px 32px rgba(10,22,40,0.1); }
+
+    .card-header {
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: start; gap: 1rem;
+      padding: 2rem 2.5rem;
+      cursor: pointer;
+      border-left: 4px solid var(--accent);
+      transition: background 0.2s;
+    }
+    .card-header:hover { background: rgba(201,168,76,0.03); }
+
+    .card-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+    .card-role { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
+    .card-duration { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: var(--light); padding: 0.2rem 0.6rem; border-radius: 99px; }
+    .card-sector { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); background: rgba(26,58,107,0.08); padding: 0.2rem 0.6rem; border-radius: 99px; }
+
+    .card-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+    .card-subtitle { font-size: 0.875rem; color: #64748b; line-height: 1.6; }
+
+    .card-toggle { width: 36px; height: 36px; border-radius: 50%; background: var(--light); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s, transform 0.3s; font-size: 1rem; color: var(--navy); margin-top: 4px; }
+    .project-card.open .card-toggle { background: var(--accent); color: var(--navy); transform: rotate(45deg); }
+
+    /* CARD BODY */
+    .card-body { display: none; border-top: 1px solid rgba(0,0,0,0.06); }
+    .project-card.open .card-body { display: block; }
+
+    .card-body-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+
+    .body-col { padding: 2rem 2.5rem; }
+    .body-col:first-child { border-right: 1px solid rgba(0,0,0,0.06); }
+
+    .body-section { margin-bottom: 1.75rem; }
+    .body-section:last-child { margin-bottom: 0; }
+    .body-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    .body-text { font-size: 0.9rem; line-height: 1.75; color: #4a5568; }
+
+    .overview-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+    .overview-item { background: var(--light); border-radius: var(--radius); padding: 1rem; }
+    .overview-item-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    .overview-item-val { font-size: 0.85rem; font-weight: 500; color: var(--navy); }
+
+    .highlights { display: flex; flex-direction: column; gap: 0.6rem; }
+    .highlight-item { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.875rem; color: #4a5568; line-height: 1.5; }
+    .highlight-item::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 6px; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem; }
+    .pill { font-size: 0.7rem; font-weight: 500; background: var(--light); color: var(--blue); padding: 0.25rem 0.65rem; border-radius: 99px; border: 1px solid rgba(26,58,107,0.12); }
+
+    /* BACK LINK */
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 1.5rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+
+    /* FOOTER */
+    footer { background: var(--navy); padding: 2rem 5vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(201,168,76,0.15); }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); }
+    .footer-logo span { color: var(--accent); }
+    footer p { font-size: 0.75rem; color: var(--muted); }
+
+    /* ANIMATIONS */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .card-body-inner { grid-template-columns: 1fr; }
+      .body-col:first-child { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.06); }
+      .overview-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; flex-direction: column; gap: 1.5rem; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); padding: 2rem 5vw; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .card-header { padding: 1.5rem; }
+      .body-col { padding: 1.5rem; }
+      .overview-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Vitor<span>.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">Sobre</a></li>
+    <li><a href="index.html#services">Atuação</a></li>
+    <li><a href="index.html#certs">Certificados</a></li>
+    <li><a href="projetos.html" class="active">Projetos</a></li>
+    <li><a href="index.html#contact">Contato</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner">
+    <a href="index.html" class="back-link">&#8592; Voltar ao início</a>
+    <span class="page-hero-tag">Cases & Projetos</span>
+    <h1>Produtos que <em>gerei valor</em></h1>
+    <p>Uma seleção de projetos onde atuei como Product Manager e Product Owner — do discovery à entrega, conectando times e estratégia.</p>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCards('all', this)">Todos</button>
+  <button class="filter-btn" onclick="filterCards('pm', this)">Product Manager</button>
+  <button class="filter-btn" onclick="filterCards('po', this)">Product Owner</button>
+  <button class="filter-btn" onclick="filterCards('marketplace', this)">Marketplace</button>
+  <button class="filter-btn" onclick="filterCards('fintech', this)">Fintech</button>
+</div>
+
+<!-- PROJECTS -->
+<div class="projects-section">
+  <p class="projects-count">Exibindo <strong id="countDisplay">5</strong> projetos</p>
+
+  <!-- CARD 1: WellBiz -->
+  <div class="project-card reveal" data-tags="po">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div>
+        <div class="card-meta">
+          <span class="card-role">Product Owner</span>
+          <span class="card-duration">5 meses</span>
+          <span class="card-sector">GovTech / Eventos</span>
+        </div>
+        <div class="card-title">WellBiz — Gestão de Eventos e Rodadas de Negócios</div>
+        <div class="card-subtitle">Produto digital para o Parque Tecnológico de São José dos Campos, criado durante a pandemia para viabilizar eventos e networking remotos.</div>
+        <div class="tags">
+          <span class="pill">Product Discovery</span>
+          <span class="pill">Scrum</span>
+          <span class="pill">Zoom Integration</span>
+          <span class="pill">B2B</span>
+        </div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+        <div class="body-col">
+          <div class="body-section">
+            <div class="body-label">Contexto & Dores</div>
+            <div class="body-text">Com a pandemia, o cliente precisou pivotar o escopo de um projeto existente para atender ao novo cenário de interação remota — criando eventos digitais e rodadas de negócios em substituição ao modelo presencial.</div>
+          </div>
+          <div class="body-section">
+            <div class="body-label">Solução</div>
+            <div class="body-text">Em parceria com cliente e stakeholders, criamos o WellBiz: sistema para gestão de eventos e rodadas de negócios com agendas personalizadas, convites, criação de eventos online e integração nativa com o Zoom para networking entre empresas.</div>
+          </div>
+        </div>
+        <div class="body-col">
+          <div class="body-section">
+            <div class="body-label">Overview do Produto</div>
+            <div class="overview-grid">
+              <div class="overview-item">
+                <div class="overview-item-label">Função</div>
+                <div class="overview-item-val">Product Owner</div>
+              </div>
+              <div class="overview-item">
+                <div class="overview-item-label">Duração</div>
+                <div class="overview-item-val">5 meses</div>
+              </div>
+              <div class="overview-item">
+                <div class="overview-item-label">Sprints</div>
+                <div class="overview-item-val">~10 sprints</div>
+              </div>
+            </div>
+            <div class="body-label">Resultados</div>
+            <div class="highlights">
+              <div class="highlight-item">190 histórias entregues (~19 por sprint)</div>
+              <div class="highlight-item">Evento principal com 4.000 participantes ao longo de 5 dias</div>
+              <div class="highlight-item">Rodadas de negócios, palestras, bate-papos e transmissões ao vivo</div>
+              <div class="highlight-item">Múltiplos negócios concretizados através da plataforma</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: Gestão de Ativos -->
+  <div class="project-card reveal" data-tags="po">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div>
+        <div class="card-meta">
+          <span class="card-role">Product Owner</span>
+          <span class="card-duration">12 meses</span>
+          <span class="card-sector">Logística / Locação</span>
+        </div>
+        <div class="card-title">Sistema de Gestão de Ativos</div>
+        <div class="card-subtitle">Portal web e aplicativo mobile para gestão de equipes, equipamentos e SLAs de grande empresa no setor de locação de guindastes.</div>
+        <div class="tags">
+          <span class="pill">Portal Web</span>
+          <span class="pill">Mobile App</span>
+          <span class="pill">Gestão de SLA</span>
+          <span class="pill">Cloud Migration</span>
+        </div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+        <div class="body-col">
+          <div class="body-section">
+            <div class="body-label">Contexto & Dores</div>
+            <div class="body-text">O cliente enfrentava dificuldades na gestão de equipes, equipamentos e no cumprimento dos SLAs contratuais com fornecedores e clientes — processos fragmentados que impactavam a operação e a visibilidade gerencial.</div>
+          </div>
+          <div class="body-section">
+            <div class="body-label">Solução</div>
+            <div class="body-text">Criação de portal web e aplicativo com visão de calendário como eixo central, facilitando o controle visual e a gestão operacional da empresa de forma integrada e em tempo real.</div>
+          </div>
+        </div>
+        <div class="body-col">
+          <div class="body-section">
+            <div class="body-label">Overview do Projeto</div>
+            <div class="overview-grid">
+              <div class="overview-item">
+                <div class="overview-item-label">Função</div>
+                <div class="overview-item-val">Product Owner</div>
+              </div>
+              <div class="overview-item">
+                <div class="overview-item-label">Duração</div>
+                <div class="overview-item-val">12 meses</div>
+              </div>
+              <div class="overview-item">
+                <div class="overview-item-label">Time</div>
+                <div class="overview-item-val">9 pessoas</div>
+              </div>
+            </div>
+            <div class="body-label">Resultados</div>
+            <div class="highlights">
+              <div class="highlight-item">Desenvolvimento de portal web e aplicativo mobile integrados</div>
+              <div class="highlight-item">Substituição de 3 ferramentas internas por uma solução única</div>
+              <div class="highlight-item">Integração contínua com outros departamentos da empresa</div>
+              <div class="highlight-item">Migração da infraestrutura para nuvem — mais enxuta, escalável e econômica</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: Gestão de Documentos -->
+  <div class="project-card reveal" data-tags="po">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div>
+        <div class="card-meta">
+          <span class="card-role">Product Owner</span>
+          <span class="card-duration">6 meses</span>
+          <span class="card-sector">Mobilidade / Concessão</span>
+        </div>
+        <div class="card-title">Portal de Gestão de Documentos e Contratos</div>
+        <div class="card-subtitle">Modernização do sistema legado de gestão de documentos e contratos de grande concessionária brasileira, com redesign completo de UX/UI.</div>
+        <div class="tags">
+          <span class="pill">Product Discovery</span>
+          <span class="pill">UX/UI</span>
+          <span class="pill">Modernização</span>
+          <span class="pill">Modular</span>
+        </div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+        <div class="body-col">
+          <div class="body-section">
+            <div class="body-label">Contexto & Dores</div>
+            <div class="body-text">Sistema obsoleto, engessado e com prazo definido para sair de catálogo. A concessionária precisava de uma solução moderna que suportasse o crescimento e os novos requisitos de compliance sem interromper a operação.</div>
+          </div>
+          <div class="body-section">
+            <div class="body-label">Solução</div>
+            <div class="body-text">Conduzimos o Product Discovery para mapear hipóteses e necessidades, depois criamos toda a interface UX/UI do novo sistema. Após validação com protótipo utilizável, obtivemos aprovação do cliente e iniciamos o desenvolvimento modular.</div>
+          </div>
+        </div>
+        <div class="body-col">
+          <div class="body-section">
+            <div class="body-label">Overview do Projeto</div>
+            <div class="overview-grid">
+              <div class="overview-item">
+                <div class="overview-item-label">Função</div>
+                <div class="overview-item-val">Product Owner</div>
+              </div>
+              <div class="overview-item">
+                <div class="overview-item-label">Duração</div>
+                <div class="overview-item-val">6 meses</div>
+              </div>
+              <div class="overview-item">
+                <div class="overview-item-label">Time</div>
+                <div class="overview-item-val">6 pessoas</div>
+              </div>
+            </div>
+            <div class="body-label">Resultados</div>
+            <div class="highlights">
+              <div class="highlight-item">Product Discovery com levantamento e validação de hipóteses</div>
+              <div class="highlight-item">Reformulação completa da interface via UX/UI</div>
+              <div class="highlight-item">Aprovação do cliente via protótipo utilizável antes do desenvolvimento</div>
+              <div class="highlight-item">Arquitetura modular permitindo evolução contínua das funcionalidades</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 4: Marketplace de Marketing -->
+  <div class="project-card reveal" data-tags="pm marketplace">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div>
+        <div class="card-meta">
+          <span class="card-role">Product Manager</span>
+          <span class="card-duration">10 meses</span>
+          <span class="card-sector">Marketplace / Marketing</span>
+        </div>
+        <div class="card-title">Marketplace para Profissionais de Marketing</div>
+        <div class="card-subtitle">Plataforma web e mobile para conectar empresas e profissionais da cadeia de marketing — agências, modelos e clientes — com foco em trabalhos específicos.</div>
+        <div class="tags">
+          <span class="pill">Product Discovery</span>
+          <span class="pill">Marketplace</span>
+          <span class="pill">UX/UI</span>
+          <span class="pill">Web & Mobile</span>
+          <span class="pill">B2B2C</span>
+        </div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+        <div class="body-col">
+          <div class="body-section">
+            <div class="body-label">Contexto & Dores</div>
+            <div class="body-text">O cliente identificou a oportunidade de resolver uma lacuna no mercado de marketing: a dificuldade de conectar empresas e profissionais com as características certas para trabalhos específicos — especialmente agências, modelos e clientes corporativos.</div>
+          </div>
+          <div class="body-section">
+            <div class="body-label">Solução</div>
+            <div class="body-text">Conduzimos o Discovery com pesquisas junto às pessoas do processo, gerando hipóteses validadas. O resultado foi uma plataforma web e mobile que permite matching entre profissionais e empresas, com UX/UI desenhado para as diferentes personas do produto.</div>
+          </div>
+        </div>
+        <div class="body-col">
+          <div class="body-section">
+            <div class="body-label">Overview do Produto</div>
+            <div class="overview-grid">
+              <div class="overview-item">
+                <div class="overview-item-label">Função</div>
+                <div class="overview-item-val">Product Manager</div>
+              </div>
+              <div class="overview-item">
+                <div class="overview-item-label">Duração</div>
+                <div class="overview-item-val">10 meses</div>
+              </div>
+              <div class="overview-item">
+                <div class="overview-item-label">Time</div>
+                <div class="overview-item-val">5 pessoas</div>
+              </div>
+            </div>
+            <div class="body-label">Resultados</div>
+            <div class="highlights">
+              <div class="highlight-item">Product Discovery com pesquisas qualitativas gerando hipóteses validadas</div>
+              <div class="highlight-item">Criação de toda a interface da plataforma web e mobile</div>
+              <div class="highlight-item">UX/UI focado na experiência das diferentes personas (agência, modelo, empresa)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 5: Marketplace de Passagens -->
+  <div class="project-card reveal" data-tags="po marketplace">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div>
+        <div class="card-meta">
+          <span class="card-role">Product Owner</span>
+          <span class="card-duration">Contínuo</span>
+          <span class="card-sector">Marketplace / Mobilidade</span>
+        </div>
+        <div class="card-title">Marketplace de Venda de Passagens de Ônibus</div>
+        <div class="card-subtitle">Gestão de backlog de produto líder na América Latina para venda de passagens — site, app Android e iOS — com foco em escala, eficiência e lucratividade.</div>
+        <div class="tags">
+          <span class="pill">Roadmap OKR/KPI</span>
+          <span class="pill">Backlog Management</span>
+          <span class="pill">Android & iOS</span>
+          <span class="pill">B2C</span>
+          <span class="pill">Data Analytics</span>
+          <span class="pill">Risco & Prevenção</span>
+        </div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+        <div class="body-col">
+          <div class="body-section">
+            <div class="body-label">Contexto & Desafios</div>
+            <div class="body-text">Produto consolidado e líder de mercado na América Latina. O desafio não era mais construir — era manter a relevância e atingir maior eficiência operacional através de novos modelos de negócio, buscando escala e lucratividade contínua.</div>
+          </div>
+          <div class="body-section">
+            <div class="body-label">Atuação</div>
+            <div class="body-text">Gestão completa do processo de compras B2C, roadmap via OKR/KPI, backlog do time de desenvolvimento, métricas de performance de ads e criação de indicadores de dados para evolução contínua do produto. Atuação como facilitador de um time multidisciplinar amplo.</div>
+          </div>
+        </div>
+        <div class="body-col">
+          <div class="body-section">
+            <div class="body-label">Overview do Produto</div>
+            <div class="overview-grid">
+              <div class="overview-item">
+                <div class="overview-item-label">Função</div>
+                <div class="overview-item-val">Product Owner</div>
+              </div>
+              <div class="overview-item">
+                <div class="overview-item-label">Duração</div>
+                <div class="overview-item-val">Contínuo</div>
+              </div>
+              <div class="overview-item">
+                <div class="overview-item-label">Time</div>
+                <div class="overview-item-val">18+ pessoas</div>
+              </div>
+            </div>
+            <div class="body-label">Responsabilidades</div>
+            <div class="highlights">
+              <div class="highlight-item">Product Discovery refinando hipóteses de evolução contínua</div>
+              <div class="highlight-item">Gestão de roadmap com OKRs e KPIs</div>
+              <div class="highlight-item">Gestão do backlog de múltiplos times (web, Android, iOS)</div>
+              <div class="highlight-item">Acompanhamento de métricas de performance de ads</div>
+              <div class="highlight-item">Criação de métricas e gestão de dados para evolução do produto</div>
+              <div class="highlight-item">Atuação com squads de risco, prevenção, dados e performance</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Vitor<span>.</span>Azevedo</div>
+  <p>&#169; 2025 &middot; Product Manager &middot; São José dos Campos, SP</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  function toggleCard(header) {
+    var card = header.parentElement;
+    card.classList.toggle('open');
+  }
+
+  function filterCards(tag, btn) {
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    var cards = document.querySelectorAll('.project-card');
+    var count = 0;
+    cards.forEach(function(card) {
+      var tags = card.getAttribute('data-tags') || '';
+      if (tag === 'all' || tags.indexOf(tag) !== -1) {
+        card.style.display = '';
+        count++;
+      } else {
+        card.style.display = 'none';
+        card.classList.remove('open');
+      }
+    });
+    document.getElementById('countDisplay').textContent = count;
+  }
+
+  var reveals = document.querySelectorAll('.reveal');
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  reveals.forEach(function(el) { obs.observe(el); });
+</script>
+</body>
+</html>
