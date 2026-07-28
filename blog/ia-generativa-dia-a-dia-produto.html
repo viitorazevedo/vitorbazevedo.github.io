@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IA Generativa no Dia a Dia da Gestão de Produto | Vitor Azevedo</title>
+  <meta name="description" content="Como a IA generativa acelera o trabalho de um Product Manager e onde o julgamento humano continua insubstituível na gestão de produto.">
+  <meta name="keywords" content="IA generativa, gestão de produto, product manager, product owner, inteligência artificial, produtividade, experimentação">
+  <meta name="author" content="Vitor Azevedo">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vitorbazevedo.com/blog/ia-generativa-dia-a-dia-produto.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="IA Generativa no Dia a Dia da Gestão de Produto">
+  <meta property="og:description" content="Como a IA generativa acelera o trabalho de um Product Manager e onde o julgamento humano continua insubstituível na gestão de produto.">
+  <meta property="og:url" content="https://vitorbazevedo.com/blog/ia-generativa-dia-a-dia-produto.html">
+  <meta property="og:site_name" content="Vitor Azevedo">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="article:published_time" content="2026-07-28">
+  <meta property="article:author" content="Vitor Azevedo">
+  <meta property="article:section" content="IA e Produto">
+  <meta property="article:tag" content="IA Generativa">
+  <meta property="article:tag" content="Produtividade">
+  <meta property="article:tag" content="Experimentação">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="IA Generativa no Dia a Dia da Gestão de Produto">
+  <meta name="twitter:description" content="Como a IA generativa acelera o trabalho de um Product Manager e onde o julgamento humano continua insubstituível na gestão de produto.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "IA generativa no dia a dia de quem trabalha com produtos digitais",
+    "description": "Como a IA generativa acelera o trabalho de um Product Manager e onde o julgamento humano continua insubstituível na gestão de produto.",
+    "datePublished": "2026-07-28",
+    "dateModified": "2026-07-28",
+    "inLanguage": "pt-BR",
+    "url": "https://vitorbazevedo.com/blog/ia-generativa-dia-a-dia-produto.html",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://vitorbazevedo.com/blog/ia-generativa-dia-a-dia-produto.html"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Vitor Azevedo",
+      "jobTitle": "Product Manager",
+      "url": "https://www.linkedin.com/in/vitor-azevedo-pm-po"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Vitor Azevedo"
+    },
+    "keywords": ["IA Generativa", "Produtividade", "Experimentação", "Gestão de Produto"],
+    "articleSection": "IA e Produto"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://vitorbazevedo.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://vitorbazevedo.com/blog.html" },
+      { "@type": "ListItem", "position": 3, "name": "IA generativa no dia a dia de quem trabalha com produtos digitais", "item": "https://vitorbazevedo.com/blog/ia-generativa-dia-a-dia-produto.html" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #0a1628;
+      --navy2:  #112040;
+      --blue:   #1a3a6b;
+      --accent: #c9a84c;
+      --accent2:#e8c97a;
+      --light:  #f5f3ef;
+      --muted:  #8a96a8;
+      --white:  #ffffff;
+      --radius: 4px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--navy); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 5vw;
+      background: rgba(10,22,40,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--white); letter-spacing: 0.02em; text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); }
+
+    /* POST HERO */
+    .post-hero { background: var(--navy); padding: 8rem 5vw 3rem; position: relative; overflow: hidden; }
+    .post-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(26,58,107,0.5) 0%, transparent 70%);
+    }
+    .post-hero-grid {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .post-hero-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 1.5rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+    .post-category-tag { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(201,168,76,0.4); padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.2rem; }
+    .post-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 3.2vw, 2.5rem); font-weight: 700; color: var(--white); line-height: 1.25; margin-bottom: 1.25rem; }
+    .post-meta-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+    .post-meta-row .dot { opacity: 0.5; }
+
+    /* ARTICLE */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 3.5rem 5vw 4rem; }
+    .article-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 2.25rem; }
+    .pill { font-size: 0.7rem; font-weight: 500; background: var(--light); color: var(--blue); padding: 0.25rem 0.65rem; border-radius: 99px; border: 1px solid rgba(26,58,107,0.12); }
+    .article-excerpt { font-size: 1.05rem; line-height: 1.8; color: #4a5568; border-left: 3px solid var(--accent); padding-left: 1.25rem; margin-bottom: 2.5rem; }
+    .article-body h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; color: var(--navy); margin: 2.5rem 0 1rem; }
+    .article-body p { font-size: 1rem; line-height: 1.85; color: #374151; margin-bottom: 1.25rem; }
+    .article-body strong { color: var(--navy); font-weight: 600; }
+
+    .author-box { margin-top: 3rem; padding: 1.75rem; background: var(--white); border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.07); }
+    .author-box .author-name { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--navy); font-size: 1.05rem; }
+    .author-box .author-role { font-size: 0.8rem; color: var(--muted); margin: 0.2rem 0 0.75rem; }
+    .author-box p { font-size: 0.9rem; line-height: 1.7; color: #4a5568; margin-bottom: 0.75rem; }
+    .author-box a { color: var(--blue); font-weight: 500; text-decoration: none; }
+    .author-box a:hover { color: var(--accent); }
+
+    .post-cta { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.08); }
+    .post-cta a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); text-decoration: none; }
+    .post-cta a:hover { color: var(--accent); }
+
+    /* FOOTER */
+    footer { background: var(--navy); padding: 2rem 5vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(201,168,76,0.15); }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); }
+    .footer-logo span { color: var(--accent); }
+    footer p { font-size: 0.75rem; color: var(--muted); }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .nav-links { display: none; flex-direction: column; gap: 1.5rem; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); padding: 2rem 5vw; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-logo">Vitor<span>.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html#about">Sobre</a></li>
+    <li><a href="../index.html#services">Atuação</a></li>
+    <li><a href="../index.html#certs">Certificados</a></li>
+    <li><a href="../projetos.html">Projetos</a></li>
+    <li><a href="../blog.html" class="active">Blog</a></li>
+    <li><a href="../index.html#contact">Contato</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- POST HERO -->
+<div class="post-hero">
+  <div class="post-hero-grid"></div>
+  <div class="post-hero-inner">
+    <a href="../blog.html" class="back-link">&#8592; Voltar ao blog</a>
+    <span class="post-category-tag">IA e Produto</span>
+    <h1>IA generativa no dia a dia de quem trabalha com produtos digitais</h1>
+    <div class="post-meta-row">
+      <span>Vitor Azevedo</span>
+      <span class="dot">&middot;</span>
+      <time datetime="2026-07-28">28 Jul 2026</time>
+      <span class="dot">&middot;</span>
+      <span>5 min de leitura</span>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<article class="article-wrap">
+  <div class="article-tags">
+    <span class="pill">IA Generativa</span>
+    <span class="pill">Produtividade</span>
+    <span class="pill">Experimentação</span>
+  </div>
+
+  <p class="article-excerpt">Incorporei agentes de IA generativa no meu fluxo de produto, da descoberta de requisitos à geração de código. Neste texto, mostro onde a IA realmente acelera o trabalho de um PM, e onde ela ainda depende inteiramente de julgamento humano.</p>
+
+  <div class="article-body">
+    <p>Meu título no LinkedIn hoje inclui "IA Builder", não por modismo, mas porque isso já é parte real do meu fluxo de trabalho. Uso agentes de IA generativa, como GitHub Copilot e BMad, no dia a dia da gestão de produto: da descoberta de requisitos até a geração de código, documentação e artefatos de planejamento. E estou aprofundando isso formalmente numa pós-graduação em IA e Negócios que começo agora.</p>
+    <p>Mas quero ser direto sobre uma coisa: IA generativa não substitui julgamento de produto. Ela substitui o trabalho mecânico que cercava esse julgamento.</p>
+
+    <h2>Onde a IA realmente acelera</h2>
+    <p>Como PM com background técnico intermediário, sei interagir o suficiente para entender o que estou pedindo, não para substituir um engenheiro, os agentes de IA mudaram três frentes concretas do meu trabalho:</p>
+    <p><strong>Descoberta de requisitos.</strong> Transformar uma conversa desestruturada com stakeholder em documento de requisitos organizado costumava consumir horas. Hoje, uso IA para estruturar a primeira versão e reservo meu tempo para o que só um humano faz bem: confirmar se aquilo captura a intenção real do negócio, ou só a intenção declarada.</p>
+    <p><strong>Geração de artefatos de planejamento.</strong> Épicos, User stories, Critérios de aceite, rascunhos de documentação técnica.. a IA generativa comprime o tempo entre "ter a ideia" e "ter o artefato revisável" pelo time. O ganho não é qualidade superior à minha, é velocidade de iteração: eu reviso e ajusto mais rápido do que escrevo do zero.</p>
+    <p><strong>Prototipagem e geração de código exploratório.</strong> Mesmo sem ser desenvolvedor, consigo validar uma hipótese técnica antes de levar para o time de engenharia. O que muda a conversa de "acho que dá para fazer assim" para "temos uma proposta de valor aqui? podemos seguir para valida-la?".</p>
+
+    <h2>Onde a IA ainda depende inteiramente de mim</h2>
+    <p>Hoje trabalho com produtos de segurança digital como biometria facial, KYC e motores de decisão antifraude. Nesse contexto, ficou muito claro onde a IA generativa tem limite: ela não decide o que é risco aceitável para o negócio, e nem deveria. Um motor de decisão bem calibrado é fruto de julgamento humano sobre trade-off entre conversão e segurança. Algo que envolve contexto regulatório, apetite de risco da empresa e realidade do cliente. IA acelera a análise, não substitui a decisão.</p>
+    <p>O mesmo vale para priorização de produto de forma geral. Pedir para um agente "gerar" um roadmap sem contexto de negócio produz algo plausível e até palpável, não necessariamente certo. A IA generativa é excelente em gerar opções bem formadas, ainda não é boa em saber qual delas é a correta para o seu contexto específico, isso continua sendo trabalho das pessoas de produto.</p>
+
+    <h2>O ponto de atenção que carrego da minha área</h2>
+    <p>Trabalhando com segurança digital, tenho aprendido a analisar e estressar qualquer sistema, seja humano ou IA, que produz respostas com alta confiança e baixa evidência. Aplico o mesmo ceticismo ao usar IA generativa no trabalho de construção de produto: toda saída de um agente é uma hipótese a ser validada, nunca uma conclusão pronta. É o método científico de sempre, só que aplicado a um assistente muito mais rápido do que qualquer analista humano.</p>
+    <p>A pergunta que orienta meu uso de IA generativa hoje não é "isso substitui alguma parte do meu trabalho?". É "isso libera tempo para a parte do meu trabalho que realmente exige julgamento?". Até agora, a resposta tem sido sim, dessa maneira, nós humanos, continuamos validando os caminhos para atingir os resultados esperados.</p>
+  </div>
+
+  <div class="author-box">
+    <div class="author-name">Vitor Azevedo</div>
+    <div class="author-role">Product Manager &middot; São José dos Campos, SP</div>
+    <p>Product Manager com mais de 8 anos de experiência em gestão de produto, agilidade e, mais recentemente, orquestração de agentes de IA generativa no ciclo de desenvolvimento de produtos digitais.</p>
+    <a href="https://www.linkedin.com/in/vitor-azevedo-pm-po" target="_blank" rel="noopener">Conectar no LinkedIn &#8594;</a>
+  </div>
+
+  <div class="post-cta">
+    <a href="../blog.html">&#8592; Ver todos os posts do blog</a>
+  </div>
+</article>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Vitor<span>.</span>Azevedo</div>
+  <p>&#169; 2026 &middot; Product Manager &middot; São José dos Campos, SP</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+</script>
+</body>
+</html>

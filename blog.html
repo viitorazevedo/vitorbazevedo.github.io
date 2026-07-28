@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog — Gestão de Produto, Agilidade e IA | Vitor Azevedo</title>
+  <meta name="description" content="Reflexões sobre gestão de produto, agilidade, carreira e IA generativa aplicada ao dia a dia de quem constrói produtos digitais.">
+  <meta name="keywords" content="blog de produto, gestão de produto, agilidade, product manager, IA generativa, carreira">
+  <meta name="author" content="Vitor Azevedo">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vitorbazevedo.com/blog.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Blog — Gestão de Produto, Agilidade e IA | Vitor Azevedo">
+  <meta property="og:description" content="Reflexões sobre gestão de produto, agilidade, carreira e IA generativa aplicada ao dia a dia de quem constrói produtos digitais.">
+  <meta property="og:url" content="https://vitorbazevedo.com/blog.html">
+  <meta property="og:site_name" content="Vitor Azevedo">
+  <meta property="og:locale" content="pt_BR">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Blog — Gestão de Produto, Agilidade e IA | Vitor Azevedo">
+  <meta name="twitter:description" content="Reflexões sobre gestão de produto, agilidade, carreira e IA generativa aplicada ao dia a dia de quem constrói produtos digitais.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog — Vitor Azevedo",
+    "url": "https://vitorbazevedo.com/blog.html",
+    "inLanguage": "pt-BR",
+    "author": { "@type": "Person", "name": "Vitor Azevedo" },
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "IA generativa no dia a dia de quem trabalha com produtos digitais",
+        "url": "https://vitorbazevedo.com/blog/ia-generativa-dia-a-dia-produto.html",
+        "datePublished": "2026-07-28",
+        "author": { "@type": "Person", "name": "Vitor Azevedo" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #0a1628;
+      --navy2:  #112040;
+      --blue:   #1a3a6b;
+      --accent: #c9a84c;
+      --accent2:#e8c97a;
+      --light:  #f5f3ef;
+      --muted:  #8a96a8;
+      --white:  #ffffff;
+      --radius: 4px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--navy); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 5vw;
+      background: rgba(10,22,40,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--white); letter-spacing: 0.02em; text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); }
+
+    /* HERO BANNER */
+    .page-hero {
+      background: var(--navy);
+      padding: 8rem 5vw 4rem;
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(26,58,107,0.5) 0%, transparent 70%);
+    }
+    .page-hero-grid {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 1100px; }
+    .page-hero-tag { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(201,168,76,0.4); padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.2rem; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 1rem; }
+    .page-hero h1 em { color: var(--accent); font-style: normal; }
+    .page-hero p { font-size: 1rem; color: rgba(255,255,255,0.6); max-width: 540px; line-height: 1.75; }
+
+    /* FILTER BAR */
+    .filter-bar { background: var(--white); border-bottom: 1px solid rgba(0,0,0,0.06); padding: 1rem 5vw; display: flex; gap: 0.75rem; flex-wrap: wrap; position: sticky; top: 64px; z-index: 90; }
+    .filter-btn { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.45rem 1rem; border-radius: 99px; border: 1px solid rgba(0,0,0,0.12); background: transparent; color: #64748b; cursor: pointer; transition: all 0.2s; }
+    .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+    /* POSTS SECTION */
+    .posts-section { padding: 3rem 5vw 5rem; max-width: 1200px; margin: 0 auto; }
+    .posts-count { font-size: 0.8rem; color: var(--muted); margin-bottom: 2rem; }
+    .posts-count strong { color: var(--navy); }
+
+    /* POST CARD (listing item) */
+    .post-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      transition: box-shadow 0.25s;
+    }
+    .post-card:hover { box-shadow: 0 8px 32px rgba(10,22,40,0.1); }
+
+    .card-content {
+      padding: 2rem 2.5rem;
+      border-left: 4px solid var(--accent);
+    }
+
+    .card-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+    .post-category { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
+    .post-date { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: var(--light); padding: 0.2rem 0.6rem; border-radius: 99px; }
+    .post-readtime { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); background: rgba(26,58,107,0.08); padding: 0.2rem 0.6rem; border-radius: 99px; }
+
+    .card-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .card-title a { color: var(--navy); text-decoration: none; }
+    .card-title a:hover { color: var(--accent2); }
+    .card-subtitle { font-size: 0.875rem; color: #64748b; line-height: 1.6; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem; }
+    .pill { font-size: 0.7rem; font-weight: 500; background: var(--light); color: var(--blue); padding: 0.25rem 0.65rem; border-radius: 99px; border: 1px solid rgba(26,58,107,0.12); }
+
+    .read-more { display: inline-block; margin-top: 1.25rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); text-decoration: none; }
+    .read-more:hover { color: var(--accent); }
+
+    /* BACK LINK */
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 1.5rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+
+    /* FOOTER */
+    footer { background: var(--navy); padding: 2rem 5vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(201,168,76,0.15); }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); }
+    .footer-logo span { color: var(--accent); }
+    footer p { font-size: 0.75rem; color: var(--muted); }
+
+    /* ANIMATIONS */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .nav-links { display: none; flex-direction: column; gap: 1.5rem; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); padding: 2rem 5vw; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .card-content { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Vitor<span>.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">Sobre</a></li>
+    <li><a href="index.html#services">Atuação</a></li>
+    <li><a href="index.html#certs">Certificados</a></li>
+    <li><a href="projetos.html">Projetos</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="index.html#contact">Contato</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner">
+    <a href="index.html" class="back-link">&#8592; Voltar ao início</a>
+    <span class="page-hero-tag">Blog & Reflexões</span>
+    <h1>Ideias sobre <em>produto e trabalho</em></h1>
+    <p>Reflexões e aprendizados sobre gestão de produto, agilidade, carreira e o uso de IA no dia a dia — construídos a partir da experiência prática em times e produtos reais.</p>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCards('all', this)">Todos</button>
+  <button class="filter-btn" onclick="filterCards('gestao', this)">Gestão de Produto</button>
+  <button class="filter-btn" onclick="filterCards('agilidade', this)">Agilidade</button>
+  <button class="filter-btn" onclick="filterCards('carreira', this)">Carreira</button>
+  <button class="filter-btn" onclick="filterCards('ia', this)">IA e Produto</button>
+</div>
+
+<!-- POSTS -->
+<div class="posts-section">
+  <p class="posts-count">Exibindo <strong id="countDisplay">1</strong> posts</p>
+
+  <!-- POST: IA generativa no dia a dia -->
+  <div class="post-card reveal" data-tags="ia">
+    <div class="card-content">
+      <div class="card-meta">
+        <span class="post-category">IA e Produto</span>
+        <span class="post-date">28 Jul 2026</span>
+        <span class="post-readtime">5 min de leitura</span>
+      </div>
+      <h2 class="card-title"><a href="blog/ia-generativa-dia-a-dia-produto.html">IA generativa no dia a dia de quem trabalha com produtos digitais</a></h2>
+      <p class="card-subtitle">Incorporei agentes de IA generativa no meu fluxo de produto, da descoberta de requisitos à geração de código. Neste texto, mostro onde a IA realmente acelera o trabalho de um PM, e onde ela ainda depende inteiramente de julgamento humano.</p>
+      <div class="tags">
+        <span class="pill">IA Generativa</span>
+        <span class="pill">Produtividade</span>
+        <span class="pill">Experimentação</span>
+      </div>
+      <a class="read-more" href="blog/ia-generativa-dia-a-dia-produto.html">Ler artigo completo &#8594;</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Vitor<span>.</span>Azevedo</div>
+  <p>&#169; 2026 &middot; Product Manager &middot; São José dos Campos, SP</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  function filterCards(tag, btn) {
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    var cards = document.querySelectorAll('.post-card');
+    var count = 0;
+    cards.forEach(function(card) {
+      var tags = card.getAttribute('data-tags') || '';
+      if (tag === 'all' || tags.indexOf(tag) !== -1) {
+        card.style.display = '';
+        count++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    document.getElementById('countDisplay').textContent = count;
+  }
+
+  var reveals = document.querySelectorAll('.reveal');
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  reveals.forEach(function(el) { obs.observe(el); });
+</script>
+</body>
+</html>
