@@ -18,48 +18,35 @@ páginas. Sempre copie de uma página existente em vez de estilizar do zero.
 
 ## 1. Escrever e publicar um novo post do blog
 
-Um post novo toca em **4 arquivos**. Esquecer algum deles é o erro mais comum neste fluxo —
-trate a lista abaixo como um checklist, não como sugestões soltas:
+Esse fluxo é dividido em 4 subagentes especializados, cada um definido em `.claude/agents/` e
+invocado com o Agent tool (`subagent_type` = nome do agente). Cada um lê e escreve o rascunho em
+`_drafts/<slug>.md` — um formato Markdown intermediário com front-matter, documentado em
+[references/draft-format.md](references/draft-format.md). O site publicado continua sendo HTML
+puro; o Markdown existe só para dar aos agentes um formato leve para passar o texto entre si antes
+da conversão final.
 
-1. **Conteúdo do post** — reúna com o usuário (ou proponha um rascunho, se ele já deu o tema):
-   - Título e um "headline" (pode ser igual ou uma variação mais longa/SEO-friendly do título)
-   - Categoria: uma das existentes — `Gestão de Produto` (filtro `gestao`), `Agilidade`
-     (`agilidade`), `Carreira` (`carreira`), `IA e Produto` (`ia`) — ou uma nova, se o tema não
-     couber em nenhuma (nesse caso é preciso também adicionar um novo `<button class="filter-btn">`
-     em `blog.html`, ver passo 3)
-   - 2-4 tags específicas (viram tanto os `.pill` visuais quanto o `keywords` do JSON-LD)
-   - Excerpt (1-2 frases, aparece em destaque no topo do post e como subtítulo do card na
-     listagem)
-   - Corpo em `<h2>`/`<p>`/`<strong>` (sem novos estilos — o `.article-body` do template já
-     estiliza esses elementos)
-   - Data de publicação e tempo de leitura estimado (conte ~200 palavras/min como referência)
-   - Sempre escreva em português, no tom das pessoas que já escreveram os posts existentes:
-     primeira pessoa, direto, com opinião própria — não é conteúdo genérico de marketing.
+Ordem do pipeline:
 
-2. **Criar `blog/<slug>.html`** a partir de
-   [templates/blog-post-template.html](templates/blog-post-template.html). O slug é o título em
-   kebab-case sem acentos (ex: "IA generativa no dia a dia" → `ia-generativa-dia-a-dia-produto`).
-   Preencha todos os placeholders `{{...}}` — não deixe nenhum para trás, incluindo os dois blocos
-   JSON-LD (`BlogPosting` e `BreadcrumbList`) e as tags `article:tag` de Open Graph (uma linha por
-   tag). Consulte um post existente em `blog/` para ver exatamente como cada placeholder deve ficar
-   preenchido no HTML final.
+1. **`writer`** — recebe o tema/outline que o usuário deu e escreve o primeiro rascunho completo
+   em `_drafts/<slug>.md` (front-matter + corpo), lendo posts existentes para manter a voz.
+2. **`editor`** — revisa gramática, clareza e tom do rascunho, mantendo a voz do autor. Não mexe
+   nos campos de SEO.
+3. **`seo-optimizer`** — ajusta título, meta description, keywords e headings para SEO, sem
+   reescrever o conteúdo.
+4. **`publisher`** — converte o rascunho final em `blog/<slug>.html` a partir de
+   [templates/blog-post-template.html](templates/blog-post-template.html), atualiza `blog.html`
+   (card novo, filtro se necessário, contador, JSON-LD) e `sitemap.xml`, apaga o rascunho publicado
+   e faz o commit local. **Não dá `git push` sozinho.**
 
-3. **Atualizar `blog.html`**:
-   - Adicione um novo bloco `<div class="post-card reveal" data-tags="...">` na seção
-     `.posts-section`, seguindo o post existente como modelo. `data-tags` deve bater com o valor do
-     filtro (`gestao`/`agilidade`/`carreira`/`ia`/novo).
-   - Se a categoria for nova, adicione também um `<button class="filter-btn" onclick="filterCards('...', this)">`
-     na `.filter-bar`.
-   - Atualize o número em `<strong id="countDisplay">` para refletir o total de posts.
-   - Adicione uma entrada correspondente ao array `blogPost` dentro do `<script type="application/ld+json">`
-     (`@type: Blog`) no `<head>`.
+Rode os três primeiros em sequência sem parar para aprovação a cada etapa — são edições reversíveis
+de um arquivo de rascunho que ainda não é público. Depois do `seo-optimizer`, mostre ao usuário o
+resultado final (título, categoria, excerpt, meta description) antes de acionar o `publisher` — é
+o último ponto fácil para pedir um ajuste antes do HTML ser gerado. Depois do `publisher`, siga
+para a seção **Deploy** abaixo — o commit já existe localmente, mas o push continua exigindo
+confirmação explícita.
 
-4. **Atualizar `sitemap.xml`**: adicione um `<url>` novo para `https://vitorbazevedo.com/blog/<slug>.html`
-   com `<lastmod>` na data de publicação (formato `YYYY-MM-DD`), `changefreq` `monthly` e
-   `priority` `0.7` (mesmo padrão do post existente).
-
-Depois de criar/editar os 4 arquivos, mostre um resumo do que mudou e siga para a seção
-**Deploy** abaixo — não faça `git push` sem essa confirmação.
+Se o usuário já trouxer o post pronto (texto final, sem precisar de rascunho/revisão/SEO), pule
+direto para o `publisher` — não force as outras etapas quando não fazem sentido.
 
 ## 2. Editar o portfólio (`index.html`, `projetos.html`)
 
