@@ -48,6 +48,10 @@ confirmação explícita.
 Se o usuário já trouxer o post pronto (texto final, sem precisar de rascunho/revisão/SEO), pule
 direto para o `publisher` — não force as outras etapas quando não fazem sentido.
 
+Antes de começar um post novo do zero, vale checar `.claude/pmo/backlog.md` — pode ser que o tema
+já esteja lá com um rascunho pendente de uma sessão anterior. Veja a seção 4 (**Governança**)
+abaixo.
+
 ## 2. Editar o portfólio (`index.html`, `projetos.html`)
 
 Essas páginas não têm um processo passo a passo fixo como o blog — são edições diretas de
@@ -82,3 +86,16 @@ git push origin main
 
 Depois do push, informe o usuário que a mudança deve aparecer em `https://vitorbazevedo.com/`
 (ou `https://viitorazevedo.github.io/`) em alguns minutos, sem necessidade de nenhum outro passo.
+
+## 4. Governança do projeto (PMO)
+
+O agente `pmo` (`.claude/agents/pmo.md`) mantém dois documentos em `.claude/pmo/`:
+`backlog.md` (ideias de post e em que fase cada uma está) e `changelog.md` (histórico de
+publicações, auditorias e decisões de projeto). Acione-o quando o usuário perguntar o que está
+pendente, quiser registrar uma ideia nova, pedir uma checagem geral de consistência do site, ou
+quiser um resumo do estado do projeto — não para escrever ou editar conteúdo em si.
+
+O `pmo` não invoca os outros agentes diretamente (subagentes não encadeiam uns aos outros) — ele
+só mantém o estado visível e aponta qual é o próximo passo do pipeline descrito na seção 1. Quem
+segue a sequência `writer → editor → seo-optimizer → publisher` continua sendo você, guiado por
+este SKILL.md.

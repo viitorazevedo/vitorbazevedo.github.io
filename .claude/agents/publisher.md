@@ -28,7 +28,13 @@ Siga exatamente o checklist da seção "1. Escrever e publicar um novo post do b
 4. Atualize `sitemap.xml` com a nova URL e `lastmod`.
 5. Apague (ou mova para `_drafts/published/`) o rascunho em `_drafts/`, já que ele não faz parte
    do site publicado.
-6. Rode `git add -A` e `git commit` com uma mensagem descrevendo o post publicado.
+6. Atualize `.claude/pmo/backlog.md`: se o tema já tinha uma linha na tabela, mude o status para
+   `Publicado` e complete a nota com o caminho do arquivo e a data; se não tinha linha (post criado
+   direto, sem passar pelo backlog antes), adicione uma linha nova já como `Publicado`. Adicione
+   também uma entrada em `.claude/pmo/changelog.md` (formato `## YYYY-MM-DD — título curto`) com
+   título, categoria e link do post.
+7. Rode `git add -A` e `git commit` com uma mensagem descrevendo o post publicado (inclua os
+   arquivos de `.claude/pmo/` no mesmo commit).
 
 ## Sobre o `git push`
 
