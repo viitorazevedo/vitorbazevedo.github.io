@@ -10,7 +10,7 @@ Status possíveis: `Ideia` → `Em rascunho` → `Em revisão` → `SEO` → `Pr
 |---|---|---|---|
 | IA generativa no dia a dia de quem trabalha com produtos digitais | IA e Produto | Publicado | `blog/ia-generativa-dia-a-dia-produto.html`, publicado 2026-07-28 |
 | Como estruturar um backlog que gera valor | Gestão de Produto | Em rascunho | Texto completo já existe em `.claude/skills/site-pessoal/references/example-posts/01-backlog-que-gera-valor.md` (de uma sessão anterior) — precisa passar pelo pipeline (revisão/SEO/publicação) antes de ir para `blog/`, ou ser confirmado com o autor se ainda é o texto que ele quer publicar como está |
-| Lições de facilitação ágil em times distribuídos | Agilidade | Em rascunho | Texto completo já existe em `.claude/skills/site-pessoal/references/example-posts/02-licoes-facilitacao-agil-times-distribuidos.md` (de uma sessão anterior) — mesma observação acima |
+| Lições de facilitação ágil em times distribuídos | Agilidade | Publicado | `blog/licoes-facilitacao-agil-times-distribuidos.html`, publicado 2026-09-29 |
 
 ## Ideias soltas (sem rascunho ainda)
 

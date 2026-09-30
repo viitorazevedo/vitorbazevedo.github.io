@@ -9,6 +9,13 @@ Formato de cada entrada: `## YYYY-MM-DD — título curto`, seguido de 1-3 linha
 
 ---
 
+## 2026-09-29 — Publicação: Lições de facilitação ágil em times distribuídos
+
+Post publicado em `blog/licoes-facilitacao-agil-times-distribuidos.html` (categoria Agilidade).
+Rascunho já vinha pronto em `_drafts/licoes-facilitacao-agil-times-distribuidos.md`, então foi
+direto para o `publisher` sem passar por `writer`/`editor`/`seo-optimizer`. `blog.html` e
+`sitemap.xml` atualizados; rascunho removido após publicação.
+
 ## 2026-08-27 — Criação da skill site-pessoal e do pipeline de agentes
 
 Estruturada a skill `site-pessoal` (fluxo de post/portfólio/deploy), depois dividida em
