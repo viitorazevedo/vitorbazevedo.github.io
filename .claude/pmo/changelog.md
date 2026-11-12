@@ -9,6 +9,12 @@ Formato de cada entrada: `## YYYY-MM-DD — título curto`, seguido de 1-3 linha
 
 ---
 
+## 2026-11-12 — Links para a ACK Consultoria (backlinking)
+
+Card "Consultoria para Empresas" em Atuação, item no Contato, link no rodapé de todas as páginas
+(e no template de post), link no author-box dos posts e `worksFor` no JSON-LD da home. Decisão:
+o link vai só do site pessoal para a ACK; o site da ACK não cita o nome pessoal.
+
 ## 2026-09-29 — Publicação: Lições de facilitação ágil em times distribuídos
 
 Post publicado em `blog/licoes-facilitacao-agil-times-distribuidos.html` (categoria Agilidade).

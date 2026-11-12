@@ -28,7 +28,8 @@
     "jobTitle": "Product Manager",
     "url": "https://vitorbazevedo.com/",
     "address": { "@type": "PostalAddress", "addressLocality": "São José dos Campos", "addressRegion": "SP", "addressCountry": "BR" },
-    "sameAs": ["https://www.linkedin.com/in/vitor-benedito-azevedo-pm-ai/"]
+    "sameAs": ["https://www.linkedin.com/in/vitor-benedito-azevedo-pm-ai/"],
+    "worksFor": { "@type": "Organization", "name": "ACK Consultoria", "url": "https://ackconsultoria.com/" }
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -120,6 +121,8 @@
     .service-icon { font-size: 1.6rem; margin-bottom: 1rem; display: block; }
     .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.75rem; }
     .service-card p { font-size: 0.875rem; line-height: 1.7; color: #64748b; }
+    .service-card a { color: var(--blue); font-weight: 500; text-decoration: none; }
+    .service-card a:hover { color: var(--accent); }
 
     /* CERTS */
     #certs { background: var(--navy); }
@@ -168,6 +171,8 @@
     .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); }
     .footer-logo span { color: var(--accent); }
     footer p { font-size: 0.75rem; color: var(--muted); }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { color: var(--accent2); }
 
     /* ANIMATIONS */
     @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
@@ -285,6 +290,11 @@
       <span class="service-icon">&#129302;</span>
       <h3>AI-Augmented Product</h3>
       <p>Orquestração de agentes de IA generativa (GitHub Copilot, BMad) para acelerar ciclos de produto: da descoberta de requisitos à geração de PRDs, specs técnicas, histórias, código e documentação.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">&#127970;</span>
+      <h3>Consultoria para Empresas</h3>
+      <p>Atendo empresas pela ACK Consultoria: gestão de projetos e produtos, desenvolvimento de sistemas, consultoria e marketing. <a href="https://ackconsultoria.com/" target="_blank" rel="noopener">Conheça a ACK &#8594;</a></p>
     </div>
   </div>
 </section>
@@ -429,6 +439,10 @@
           <span class="contact-link-icon">&#128188;</span>
           LinkedIn — vitor-benedito-azevedo-pm-ai
         </a>
+        <a href="https://ackconsultoria.com/" target="_blank" rel="noopener" class="contact-link">
+          <span class="contact-link-icon">&#127970;</span>
+          ACK Consultoria — ackconsultoria.com
+        </a>
       </div>
     </div>
     <div class="contact-side">
@@ -453,7 +467,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Vitor<span>.</span>Azevedo</div>
-  <p>&#169; 2026 &middot; Product Manager &middot; São José dos Campos, SP</p>
+  <p>&#169; 2026 &middot; Product Manager &middot; São José dos Campos, SP &middot; <a href="https://ackconsultoria.com/" target="_blank" rel="noopener">ACK Consultoria</a></p>
 </footer>
 
 <script>
